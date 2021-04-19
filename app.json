@@ -1,0 +1,12 @@
+{
+  "name": "fake-ie",
+  "displayName": "fake-ie",
+  "expo": {
+    "name": "fake-ie",
+    "slug": "fake-ie",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
