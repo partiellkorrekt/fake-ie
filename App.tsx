@@ -73,7 +73,7 @@ export default function App() {
             <MenuBar />
             <ToolbarWrap>
               <ToolbarRow>
-                <Toolbar big>
+                <Toolbar big scrollOverflow>
                   <ToolbarButton
                     icon="go_back"
                     label="Back"

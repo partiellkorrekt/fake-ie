@@ -6,6 +6,7 @@ import TraditionalBorderView from '../TraditionalBorderView'
 
 export type ToolbarProps = {
   big?: boolean
+  scrollOverflow?: boolean
 }
 
 const Wrap = styled(TraditionalBorderView)<{ $big?: boolean }>`
@@ -45,21 +46,25 @@ const styles = StyleSheet.create({
   },
 })
 
-const Toolbar: React.FC<ToolbarProps> = ({ children, big }) => {
+const Toolbar: React.FC<ToolbarProps> = ({ children, big, scrollOverflow }) => {
   return (
     <Wrap $big={big}>
       <View style={styles.inner}>
         <Bevel type="raised3dFlat" style={styles.handle} />
         <Bevel type="raised3dFlat" style={styles.handle2} />
-        <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          alwaysBounceHorizontal={false}
-          style={styles.scrollView}
-          contentContainerStyle={styles.scrollViewInner}
-        >
-          {children}
-        </ScrollView>
+        {scrollOverflow ? (
+          <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            alwaysBounceHorizontal={false}
+            style={styles.scrollView}
+            contentContainerStyle={styles.scrollViewInner}
+          >
+            {children}
+          </ScrollView>
+        ) : (
+          children
+        )}
       </View>
     </Wrap>
   )
