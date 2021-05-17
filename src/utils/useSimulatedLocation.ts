@@ -68,7 +68,6 @@ const encodeRealUrl = ({
   decode = true,
   scripts = false,
 }: SimulatedLocation): string => {
-  console.log(url, year, decode, scripts)
   if (!year) {
     return url
   }

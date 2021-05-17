@@ -5,8 +5,9 @@
     "name": "fake-ie",
     "slug": "fake-ie",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "description": "Simulate an old version of Internet Explorer on iOS",
+    "githubUrl": "https://github.com/partiellkorrekt/fake-ie",
+    "privacy": "public"
   }
 }

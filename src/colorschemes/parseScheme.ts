@@ -116,5 +116,4 @@ const parseScheme = (input: string): Scheme => {
 }
 
 const schemes = _.mapValues(schemeData, parseScheme) as Record<string, Scheme>
-console.log(schemes)
 export default schemes

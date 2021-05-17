@@ -37,11 +37,6 @@ const makeIcon = <T extends string>({
     height,
     overflow: 'hidden',
   }
-  const asset =
-    typeof source === 'string' || typeof source === 'number'
-      ? Asset.fromModule(source)
-      : undefined
-  const assetPromise = asset?.downloadAsync()
 
   return function Icon({ name, tintColor, style }) {
     const index = name ? Math.max(0, names.indexOf(name)) : 0
@@ -54,14 +49,6 @@ const makeIcon = <T extends string>({
       }),
       [index, tintColor]
     )
-
-    const [src, setSrc] = useState(source)
-    useEffect(() => {
-      assetPromise?.then((data) => {
-        console.log({ uri: data.localUri ?? undefined })
-        setSrc({ uri: data.localUri ?? undefined })
-      })
-    }, [])
 
     return (
       <View style={[style, outerStyle]}>
