@@ -38,7 +38,7 @@ Basically running the app boils down to:
 
 The app supports the use of Windows-Colorschemes. To select a different color-scheme, find this line in `App.tsx`:
 
-```ts
+```tsx
 <ThemeProvider theme={schemes['Windows Standard']}>
 ```
 
