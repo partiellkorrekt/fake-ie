@@ -33,3 +33,38 @@ Basically running the app boils down to:
 1. Install the [Expo client](https://apps.apple.com/de/app/expo-client/id982107779)
 2. Make sure that your PC and your iPad are on the same network
 3. Scan the QR-Code with the iOS camera and open the included link
+
+## Preview Features
+
+The app supports the use of Windows-Colorschemes. To select a different color-scheme, find this line in `App.tsx`:
+
+```ts
+<ThemeProvider theme={schemes['Windows Standard']}>
+```
+
+Then change "Windows Standard" to one of the following:
+
+- Brick
+- Desert
+- Eggplant
+- High Contrast #1
+- High Contrast #2
+- High Contrast Black
+- High Contrast White
+- Lilac
+- Maple
+- Marine (high color)
+- Plum (high color)
+- Pumpkin (large)
+- Rainy Day
+- Red, White, and Blue (VGA)
+- Rose
+- Slate
+- Spruce
+- Storm (VGA)
+- Teal (VGA)
+- Wheat
+- Windows Classic
+- Windows Standard
+
+These color-schemes have been extracted from Windows 2000
