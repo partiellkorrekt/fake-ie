@@ -13,7 +13,9 @@ const styles = StyleSheet.create({
   outerWrap: {},
   restored: {
     width: 800,
+    maxWidth: '100%',
     height: 600,
+    maxHeight: '100%',
   },
   maximized: {
     flex: 1,

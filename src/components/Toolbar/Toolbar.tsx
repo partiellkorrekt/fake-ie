@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, ScrollView } from 'react-native'
 import styled from 'styled-components'
 import Bevel from '../Bevel'
 import TraditionalBorderView from '../TraditionalBorderView'
@@ -35,6 +35,14 @@ const styles = StyleSheet.create({
     marginRight: 2,
     height: '100%',
   },
+  scrollView: {
+    flex: 1,
+  },
+  scrollViewInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexGrow: 1,
+  },
 })
 
 const Toolbar: React.FC<ToolbarProps> = ({ children, big }) => {
@@ -43,7 +51,15 @@ const Toolbar: React.FC<ToolbarProps> = ({ children, big }) => {
       <View style={styles.inner}>
         <Bevel type="raised3dFlat" style={styles.handle} />
         <Bevel type="raised3dFlat" style={styles.handle2} />
-        {children}
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          alwaysBounceHorizontal={false}
+          style={styles.scrollView}
+          contentContainerStyle={styles.scrollViewInner}
+        >
+          {children}
+        </ScrollView>
       </View>
     </Wrap>
   )
