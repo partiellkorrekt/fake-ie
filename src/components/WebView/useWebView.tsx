@@ -1,6 +1,8 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import WebView, { WebViewNavigation, WebViewProps } from 'react-native-webview'
 import { WebViewNativeProgressEvent } from 'react-native-webview/lib/WebViewTypes'
+import { useInjectedStyle } from './useInjectedStyle'
+import { useUAStyles } from './useUAStyles'
 
 export const addHttp = (url: string): string => {
   if (url.startsWith('http://') || url.startsWith('https://')) {
@@ -34,9 +36,8 @@ export const useWebView = (
   }
 } => {
   const webView = useRef<WebView>(null)
-  const [navigationState, setNavigationState] = useState<
-    WebViewNavigation | WebViewNativeProgressEvent
-  >()
+  const [navigationState, setNavigationState] =
+    useState<WebViewNavigation | WebViewNativeProgressEvent>()
 
   const navigatorUrlRef = useRef(homeUrl)
   const onNavigationStateChange = useCallback<
@@ -55,10 +56,18 @@ export const useWebView = (
     })
   }, [])
 
+  const { injectedJavaScript } = useInjectedStyle(
+    webView,
+    useUAStyles(),
+    'partiellkorrekt-ua-styles'
+  )
+
   const props: WebViewProps = useMemo(
     () => ({
       onNavigationStateChange,
       onLoadProgress,
+      injectedJavaScript,
+      onMessage: () => undefined,
       allowsFullscreenVideo: false,
       source: {
         uri: homeUrl,
