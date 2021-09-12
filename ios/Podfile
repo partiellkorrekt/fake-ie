@@ -10,10 +10,20 @@ target 'fakeie' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  inhibit_all_warnings!
+
   if !ENV['CI']
-    use_flipper!({ 'Flipper' => '0.80.0' })
+    #use_flipper!({ 'Flipper' => '0.80.0' })
     post_install do |installer|
-      flipper_post_install(installer)
+      # flipper_post_install(installer)
+
+      installer.pods_project.targets.each do |t|
+        t.build_configurations.each do |config|
+          if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].split('.')[0].to_i < 11
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+          end
+        end
+      end
     end
   end
 end
